@@ -54,3 +54,6 @@ all: basic
 basic: test_bskip.cpp
 	$(CXX) $(CFLAGS) $(DEFINES) $(LDFLAGS) -o $@ test_bskip.cpp
 
+clean:
+	rm basic
+

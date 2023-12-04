@@ -286,6 +286,7 @@ template <typename K, size_t MAX_KEYS> class BSkip {
 public:
   int curr_max_height; // max height of current sl
   double promotion_probability; // promotion probability
+  int boost;
   bool has_zero = false; // using 0 as first sentinel, so just keep it separate
 
 	uint64_t elts_in_sl;
@@ -318,7 +319,7 @@ public:
 	// testing scaling down variance
 	K s;
 
-  BSkip(int p) {
+  BSkip(double p, uint32_t _boost = 1) {
 	  /*
 		elts_in_sl = 0;
 
@@ -331,6 +332,7 @@ public:
 		printf("s = %lu, promotion prob %f\n", s, promotion_probability);
     */
 	promotion_probability = (double)(1.0)/(double)p;
+	boost = _boost;
     curr_max_height = 0;
     
     // initialize bskip with array of headers
@@ -408,13 +410,21 @@ int BSkip<K, MAX_KEYS>::flip_coins() {
 #if DEBUG_PRINT
 		printf("flip coin at elt %lu\n", elts_in_sl);
 #endif
-		std::uniform_real_distribution<double> distribution(0.0, 1.0);
-		while(distribution(random_engine) <= promotion_probability && result < MAX_HEIGHT - 1) { 
-			result++; 
-		}	
+		// std::uniform_real_distribution<double> distribution(0.0, 1.0);
+		std::negative_binomial_distribution<int> distribution(boost, 1 - promotion_probability);
+		result = distribution(random_engine);
+		int remainder = result % boost;
+		result = result / boost;
+		// std::uniform_real_distribution<double> distr(0.0, 1.0);
+		// if (distr(random_engine) <= (double)remainder / (double)(boost)) {
+		// 	result += 1;
+		// }
+		// while(distribution(random_engine) <= promotion_probability && result < MAX_HEIGHT - 1) { 
+			// result++; 
+		// }	
 	}
 	elts_in_sl++;
-	return result;
+	return std::min(result, MAX_HEIGHT - 1);
 	/*
   int result = 0;
   std::bernoulli_distribution coin_distribution{promotion_probability};
