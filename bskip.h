@@ -446,7 +446,6 @@ bool BSkip<K, MAX_KEYS>::insert(K k, uint32_t idx) {
 #endif
 	// special case for 0 since we use it as the front sentinel
 	if (k == 0) { has_zero = true; return true; }
-
 	
   // flip coins to determine your promotion level
   int level_to_promote = flip_coins();

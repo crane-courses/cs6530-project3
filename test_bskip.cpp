@@ -255,7 +255,7 @@ int main(int argc, char** argv) {
   // __cilkrts_set_param("nworkers","16");
 //   printf("num workers %d\n", ParallelTools::getWorkers());
   printf("num workers %d\n", 1);
-
+	printf("TESTING LOG BOOSTING AND STANDARD: sqrt\n");
 	// 2**5 -> 2**13
 	constexpr uint32_t p_32 = (1 << 5);
 	printf("\nexp size %u\n", p_32);
@@ -269,9 +269,9 @@ int main(int argc, char** argv) {
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 7);
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 2);
 	test_unordered_insert<uint64_t, p_32>(n, seed, std::sqrt(p_32 * s), 7);
-	test_unordered_insert<uint64_t, p_32>(n, seed, std::sqrt(p_32 * s), 2);
-	test_unordered_insert<uint64_t, p_32>(n, seed, std::cbrt(p_32 * s), 7);
-	test_unordered_insert<uint64_t, p_32>(n, seed, std::cbrt(p_32 * s), 2);
+	// test_unordered_insert<uint64_t, p_32>(n, seed, std::sqrt(p_32 * s), 2);
+	// test_unordered_insert<uint64_t, p_32>(n, seed, std::cbrt(p_32 * s), 7);
+	// test_unordered_insert<uint64_t, p_32>(n, seed, std::cbrt(p_32 * s), 2);
 
 
 	// test_unordered_insert<uint64_t, p_32>(n, seed, p_32 * s, 1);
@@ -285,9 +285,9 @@ int main(int argc, char** argv) {
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 9);
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 2);
 	test_unordered_insert<uint64_t, p_64>(n, seed, std::sqrt(p_64 * s), 9);
-	test_unordered_insert<uint64_t, p_64>(n, seed, std::sqrt(p_64 * s), 2);
-	test_unordered_insert<uint64_t, p_64>(n, seed, std::cbrt(p_64 * s), 9);
-	test_unordered_insert<uint64_t, p_64>(n, seed, std::cbrt(p_64 * s), 2);
+	// test_unordered_insert<uint64_t, p_64>(n, seed, std::sqrt(p_64 * s), 2);
+	// test_unordered_insert<uint64_t, p_64>(n, seed, std::cbrt(p_64 * s), 9);
+	// test_unordered_insert<uint64_t, p_64>(n, seed, std::cbrt(p_64 * s), 2);
 
 
 	// test_unordered_insert<uint64_t, p_64>(n, seed, p_64 * s, 1);
@@ -302,9 +302,9 @@ int main(int argc, char** argv) {
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 10);
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 2);
 	test_unordered_insert<uint64_t, p_128>(n, seed, std::sqrt(p_128 * s), 10);
-	test_unordered_insert<uint64_t, p_128>(n, seed, std::sqrt(p_128 * s), 2);
-	test_unordered_insert<uint64_t, p_128>(n, seed, std::cbrt(p_128 * s), 10);
-	test_unordered_insert<uint64_t, p_128>(n, seed, std::cbrt(p_128 * s), 2);
+	// test_unordered_insert<uint64_t, p_128>(n, seed, std::sqrt(p_128 * s), 2);
+	// test_unordered_insert<uint64_t, p_128>(n, seed, std::cbrt(p_128 * s), 10);
+	// test_unordered_insert<uint64_t, p_128>(n, seed, std::cbrt(p_128 * s), 2);
 
 
 	// test_unordered_insert<uint64_t, p_128>(n, seed, p_128 * s, 1);
@@ -318,9 +318,9 @@ int main(int argc, char** argv) {
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 12);
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 2);
 	test_unordered_insert<uint64_t, p_256>(n, seed, std::sqrt(p_256 * s), 12);
-	test_unordered_insert<uint64_t, p_256>(n, seed, std::sqrt(p_256 * s), 2);
-	test_unordered_insert<uint64_t, p_256>(n, seed, std::cbrt(p_256 * s), 12);
-	test_unordered_insert<uint64_t, p_256>(n, seed, std::cbrt(p_256 * s), 2);
+	// test_unordered_insert<uint64_t, p_256>(n, seed, std::sqrt(p_256 * s), 2);
+	// test_unordered_insert<uint64_t, p_256>(n, seed, std::cbrt(p_256 * s), 12);
+	// test_unordered_insert<uint64_t, p_256>(n, seed, std::cbrt(p_256 * s), 2);
 
 
 	// test_unordered_insert<uint64_t, p_256>(n, seed, p_256 * s, 1);
@@ -334,9 +334,9 @@ int main(int argc, char** argv) {
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 13);
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 2);
 	test_unordered_insert<uint64_t, p_512>(n, seed, std::sqrt(p_512 * s), 13);
-	test_unordered_insert<uint64_t, p_512>(n, seed, std::sqrt(p_512 * s), 2);
-	test_unordered_insert<uint64_t, p_512>(n, seed, std::cbrt(p_512 * s), 13);
-	test_unordered_insert<uint64_t, p_512>(n, seed, std::cbrt(p_512 * s), 2);
+	// test_unordered_insert<uint64_t, p_512>(n, seed, std::sqrt(p_512 * s), 2);
+	// test_unordered_insert<uint64_t, p_512>(n, seed, std::cbrt(p_512 * s), 13);
+	// test_unordered_insert<uint64_t, p_512>(n, seed, std::cbrt(p_512 * s), 2);
 
 
 	// test_unordered_insert<uint64_t, p_512>(n, seed, p_512 * s, 1);
@@ -350,9 +350,9 @@ int main(int argc, char** argv) {
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 14);
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 2);
 	test_unordered_insert<uint64_t, p_1024>(n, seed, std::sqrt(p_1024 * s), 14);
-	test_unordered_insert<uint64_t, p_1024>(n, seed, std::sqrt(p_1024 * s), 2);
-	test_unordered_insert<uint64_t, p_1024>(n, seed, std::cbrt(p_1024 * s), 14);
-	test_unordered_insert<uint64_t, p_1024>(n, seed, std::cbrt(p_1024 * s), 2);
+	// test_unordered_insert<uint64_t, p_1024>(n, seed, std::sqrt(p_1024 * s), 2);
+	// test_unordered_insert<uint64_t, p_1024>(n, seed, std::cbrt(p_1024 * s), 14);
+	// test_unordered_insert<uint64_t, p_1024>(n, seed, std::cbrt(p_1024 * s), 2);
 
 
 	// test_unordered_insert<uint64_t, p_1024>(n, seed, p_1024 * s, 1);
@@ -367,9 +367,9 @@ int main(int argc, char** argv) {
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 15);
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 2);
 	test_unordered_insert<uint64_t, p_2048>(n, seed, std::sqrt(p_2048 * s), 16);
-	test_unordered_insert<uint64_t, p_2048>(n, seed, std::sqrt(p_2048 * s), 2);
-	test_unordered_insert<uint64_t, p_2048>(n, seed, std::cbrt(p_2048 * s), 16);
-	test_unordered_insert<uint64_t, p_2048>(n, seed, std::cbrt(p_2048 * s), 2);
+	// test_unordered_insert<uint64_t, p_2048>(n, seed, std::sqrt(p_2048 * s), 2);
+	// test_unordered_insert<uint64_t, p_2048>(n, seed, std::cbrt(p_2048 * s), 16);
+	// test_unordered_insert<uint64_t, p_2048>(n, seed, std::cbrt(p_2048 * s), 2);
 
 
 	// test_unordered_insert<uint64_t, p_2048>(n, seed, p_2048 * s, 1);
@@ -384,9 +384,9 @@ int main(int argc, char** argv) {
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 17);
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 2);
 	test_unordered_insert<uint64_t, p_4096 >(n, seed, std::sqrt(p_4096 * s), 17);
-	test_unordered_insert<uint64_t, p_4096 >(n, seed, std::sqrt(p_4096 * s), 2);
-	test_unordered_insert<uint64_t, p_4096 >(n, seed, std::cbrt(p_4096 * s), 17);
-	test_unordered_insert<uint64_t, p_4096 >(n, seed, std::cbrt(p_4096 * s), 2);
+	// test_unordered_insert<uint64_t, p_4096 >(n, seed, std::sqrt(p_4096 * s), 2);
+	// test_unordered_insert<uint64_t, p_4096 >(n, seed, std::cbrt(p_4096 * s), 17);
+	// test_unordered_insert<uint64_t, p_4096 >(n, seed, std::cbrt(p_4096 * s), 2);
 
 
 	// test_unordered_insert<uint64_t, p_4096 >(n, seed, p_4096 * s, 1);
@@ -401,9 +401,9 @@ int main(int argc, char** argv) {
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 19);
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 2);
 	test_unordered_insert<uint64_t, p_8192>(n, seed, std::sqrt(p_8192 * s), 19);
-	test_unordered_insert<uint64_t, p_8192>(n, seed, std::sqrt(p_8192 * s), 2);
-	test_unordered_insert<uint64_t, p_8192>(n, seed, std::cbrt(p_8192 * s), 19);
-	test_unordered_insert<uint64_t, p_8192>(n, seed, std::cbrt(p_8192 * s), 2);
+	// test_unordered_insert<uint64_t, p_8192>(n, seed, std::sqrt(p_8192 * s), 2);
+	// test_unordered_insert<uint64_t, p_8192>(n, seed, std::cbrt(p_8192 * s), 19);
+	// test_unordered_insert<uint64_t, p_8192>(n, seed, std::cbrt(p_8192 * s), 2);
 
 
 	// test_unordered_insert<uint64_t, p_8192>(n, seed, p_8192 * s, 1);
