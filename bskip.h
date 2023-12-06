@@ -71,7 +71,7 @@ public:
 
 	uint64_t sum_keys() {
 		uint64_t result = 0;
-		for(int i = 0; i < num_elts; i++) {
+		for(uint32_t i = 0; i < num_elts; i++) {
 			result += keys[i];
 		}
 		return result;
@@ -334,6 +334,7 @@ public:
 	promotion_probability = (double)(1.0)/(double)p;
 	boost = _boost;
     curr_max_height = 0;
+	elts_in_sl = 0;
     
     // initialize bskip with array of headers
     for(int i = 0; i < MAX_HEIGHT; i++) {
@@ -445,7 +446,10 @@ bool BSkip<K, V, MAX_KEYS>::insert(K k, V v) {
 bool BSkip<K, MAX_KEYS>::insert(K k, uint32_t idx) {
 #endif
 	// special case for 0 since we use it as the front sentinel
-	if (k == 0) { has_zero = true; return true; }
+	if (k == 0ULL) { 
+		has_zero = true; 
+		return true; 
+	}
 	
   // flip coins to determine your promotion level
   int level_to_promote = flip_coins();
@@ -1002,7 +1006,7 @@ template <typename K, size_t MAX_KEYS>
 		BSkipNodeInternal<K, MAX_KEYS>* top_node_cast = (BSkipNodeInternal<K, MAX_KEYS>*)top_node;	
 		// iterate over the 2nd level
 		// cilk_for(int i = 0; i < top_node->num_elts; i++) {
-		for(int i = 0; i < top_node->num_elts; i++) {
+		for(uint64_t i = 0; i < top_node->num_elts; i++) {
 			auto curr_node = top_node_cast->get_child_at_rank(i);
 			K end;
 			if (i < top_node->num_elts - 1) {
@@ -1014,7 +1018,7 @@ template <typename K, size_t MAX_KEYS>
 			while(curr_node->get_header() < end) {
 				BSkipNodeInternal<K, MAX_KEYS>* curr_node_cast = (BSkipNodeInternal<K, MAX_KEYS>*)curr_node;
 				// cilk_for(int j = 0; j < curr_node->num_elts; j++) {
-					for(int j = 0; j < curr_node->num_elts; j++) {
+					for(uint64_t j = 0; j < curr_node->num_elts; j++) {
 					auto curr_leaf = curr_node_cast->get_child_at_rank(j);
 					K leaf_end = 0;
 					if ( j < curr_node->num_elts - 1 ) {

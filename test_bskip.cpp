@@ -229,7 +229,7 @@ void test_unordered_insert(uint64_t max_size, std::seed_seq &seed, double p, int
 	uint64_t psum_time = end - start;
 
 	uint64_t correct_sum = 0;
-	for(int i = 0; i < max_size; i++) {
+	for(uint64_t i = 0; i < max_size; i++) {
 		correct_sum += data[i];
 	}
 
@@ -237,7 +237,7 @@ void test_unordered_insert(uint64_t max_size, std::seed_seq &seed, double p, int
 	tbassert(correct_sum == psum, "got psum %lu, should be %lu\n", psum, correct_sum);
 
 	FILE* file = fopen("bskip_times.csv", "a+");
-	fprintf(file, "%d,%lu,%lu,%lu,%lu,%lu,%lu,%f,%lu,%f\n", p, max_size, insert_time, find_time, sum_time, psum_time, serial_longest_find, serial_average_find, parallel_longest_find, parallel_average_find);
+	fprintf(file, "%f,%lu,%lu,%lu,%lu,%lu,%lu,%f,%lu,%f\n", p, max_size, insert_time, find_time, sum_time, psum_time, serial_longest_find, serial_average_find, parallel_longest_find, parallel_average_find);
 
 	s.get_size_stats();
 #if STATS
@@ -268,10 +268,10 @@ int main(int argc, char** argv) {
 	// test_unordered_insert<uint64_t, p_32>(n, seed, p_32 * s, 2);
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 7);
 	// test_unordered_insert<uint64_t, p_32>(n, seed, 2, 2);
-	test_unordered_insert<uint64_t, p_32>(n, seed, std::sqrt(p_32 * s), 7);
-	// test_unordered_insert<uint64_t, p_32>(n, seed, std::sqrt(p_32 * s), 2);
+	// test_unordered_insert<uint64_t, p_32>(n, seed, std::sqrt(p_32 * s), 7);
+	test_unordered_insert<uint64_t, p_32>(n, seed, std::sqrt(p_32 * s), 2);
 	// test_unordered_insert<uint64_t, p_32>(n, seed, std::cbrt(p_32 * s), 7);
-	// test_unordered_insert<uint64_t, p_32>(n, seed, std::cbrt(p_32 * s), 2);
+	test_unordered_insert<uint64_t, p_32>(n, seed, std::cbrt(p_32 * s), 2);
 
 
 	// test_unordered_insert<uint64_t, p_32>(n, seed, p_32 * s, 1);
